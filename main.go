@@ -49,7 +49,7 @@ func (c *Canvas) init() {
 }
 
 // Draws vertical and horizontal grid lines on Canvas
-func showGridLines(c *Canvas) {
+func drawGridLines(c *Canvas) {
 
 	w := float64(c.width)
 	h := float64(c.width)
@@ -97,7 +97,7 @@ func showGridLines(c *Canvas) {
 
 // Takes in a Canvas and draws grid references at grid axis
 // Can also show images at grid reference points
-func showGridRef(c *Canvas, gridText bool, gridImage bool) {
+func drawGridRef(c *Canvas, gridText bool, gridImage bool) {
 
 	// if gridText true setup default go TTF font
 	if gridText {
@@ -141,7 +141,7 @@ func showGridRef(c *Canvas, gridText bool, gridImage bool) {
 				setX = smallGrid
 				setY = largeGrid
 			}
-			px, py, ax, ay := setGridPosition(c, setX, setY)
+			px, py, ax, ay := setGridPos(c, setX, setY)
 			if gridImage {
 				c.ctx.DrawImageAnchored(im, px, py, ax, ay)
 			}
@@ -154,10 +154,10 @@ func showGridRef(c *Canvas, gridText bool, gridImage bool) {
 	}
 }
 
-// Sets start position in lower left of grid
-// Increments positions based on passed in x, y arguments
+// Sets start position 0,0 in lower left of image/grid
+// Increments positions based on positive passed in x, y values
 // Returns values required by gg draw functions
-func setGridPosition(c *Canvas, x, y int) (px, py int, ax, ay float64) {
+func setGridPos(c *Canvas, x, y int) (px, py int, ax, ay float64) {
 	startX := int(c.X)
 	startY := int(c.Y)
 
@@ -197,6 +197,7 @@ func setGridPosition(c *Canvas, x, y int) (px, py int, ax, ay float64) {
 // Demo of text and image based grid references
 // Outputs two images files gridref.png and gridimg.png
 func main() {
+	fmt.Println("Running gridgg demo...")
 
 	layer1 := &Canvas{
 		width:   1024,
@@ -218,14 +219,16 @@ func main() {
 
 	// layer1 create grid text reference points
 	layer1.init()
-	showGridRef(layer1, true, false)
-	showGridLines(layer1)
+	drawGridRef(layer1, true, false)
+	drawGridLines(layer1)
+	fmt.Println("Saving file gridref.png...")
 	layer1.ctx.SavePNG("gridref.png")
 
 	// layer2 create grid image reference points
 	// Demo image is sent in function to gopher.png
 	layer2.init()
-	showGridRef(layer2, false, true)
-	showGridLines(layer2)
+	drawGridRef(layer2, false, true)
+	drawGridLines(layer2)
+	fmt.Println("Saving file gridimg.png...")
 	layer2.ctx.SavePNG("gridimg.png")
 }
