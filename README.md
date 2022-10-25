@@ -3,7 +3,7 @@
 
 Grid helper functions assist with simplifying position of images and text using positive grid x, y axis references. For use like a map coordinate system. Ensures images are placed on the canvas (background image layer) in correct alignment and within set padding values. Functions provided for overlaying grid lines and grid reference points. Scales with changing of grid size. gridX and gridY sizes do not need to be equal values. Grids can be 4x4, 8x8, 8x4, 16x8 etc. Demo of image placement and however images align at grid references points included.
 
-### Example Usage Image Placement on Grid
+### Example Usage - Center Image Placement on Grid
 ```go
         // For an equal 8x8 grid layout
         // To center an image or text
@@ -16,6 +16,7 @@ Grid helper functions assist with simplifying position of images and text using 
 
 ```
 
+### Type and Function Summary
 ```go
 // Struct with information about the created image
 // canvas or background layer.
