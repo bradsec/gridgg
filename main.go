@@ -200,7 +200,7 @@ func main() {
 	fmt.Println("Running gridgg demo...")
 
 	layer1 := &Canvas{
-		width:   1524,
+		width:   1024,
 		height:  1024,
 		padding: 30,
 		gridX:   8,
