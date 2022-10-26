@@ -40,7 +40,7 @@ func (c *Canvas) init() {
 	c.ctx.SetHexColor(c.color)
 	c.ctx.Clear()
 	w := float64(c.width)
-	h := float64(c.width)
+	h := float64(c.height)
 	p := float64(c.padding)
 	c.offsetX = (w - p - p) / float64(c.gridX)
 	c.offsetY = (h - p - p) / float64(c.gridY)
@@ -52,7 +52,7 @@ func (c *Canvas) init() {
 func drawGridLines(c *Canvas) {
 
 	w := float64(c.width)
-	h := float64(c.width)
+	h := float64(c.height)
 	p := float64(c.padding)
 
 	vLines, hLines := c.gridX, c.gridY
@@ -200,7 +200,7 @@ func main() {
 	fmt.Println("Running gridgg demo...")
 
 	layer1 := &Canvas{
-		width:   1024,
+		width:   1524,
 		height:  1024,
 		padding: 30,
 		gridX:   8,
